@@ -50,3 +50,95 @@
     overflow-y: auto;
     flex: 1;
 }
+
+.inventory-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inventory-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: var(--SmartThemeBlurTintColor);
+    border-radius: 5px;
+}
+
+.inventory-dropdown {
+    flex: 1;
+    padding: 5px;
+    background: var(--SmartThemeBodyColor);
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 3px;
+    color: var(--SmartThemeEmColor);
+}
+
+.inventory-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.inventory-item {
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 5px;
+    background: var(--SmartThemeBlurTintColor);
+}
+
+.inventory-item-header {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inventory-item-header:hover {
+    background: var(--SmartThemeBodyColor);
+}
+
+.item-toggle {
+    transition: transform 0.2s;
+    width: 10px;
+}
+
+.inventory-item-content {
+    padding: 10px;
+    border-top: 1px solid var(--SmartThemeBorderColor);
+}
+
+.item-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.item-fields label {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.item-fields textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 5px;
+    background: var(--SmartThemeBodyColor);
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 3px;
+    color: var(--SmartThemeEmColor);
+    resize: vertical;
+}
+
+.item-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.inventory-actions {
+    padding: 10px;
+    border-top: 1px solid var(--SmartThemeBorderColor);
+}
+

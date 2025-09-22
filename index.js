@@ -47,8 +47,8 @@ function openInventoryModal() {
     if ($("#char-sheet-modal").length > 0) {
         return;
     }
-    // Erstelle Modal mit jQuery, aber Stück für Stück
-    const modal = $('<div>', {
+    // Erstelle Dialog Element
+    const dialog = $('<dialog>', {
         id: 'char-sheet-modal',
         class: 'char-sheet-modal'
     });
@@ -60,18 +60,29 @@ function openInventoryModal() {
     }).append($('<h3>').text('Inventar'), $('<span>', {
         class: 'char-sheet-modal-close',
         text: '×',
-        click: () => modal.remove()
+        click: () => dialog[0].close()
     }));
     const modalBody = $('<div>', {
         class: 'char-sheet-modal-body'
     }).append($('<p>').text('Hier kommt das Inventar hin!'));
     modalContent.append(modalHeader, modalBody);
-    modal.append(modalContent);
-    $('body').append(modal);
-    // Click outside to close
-    modal.on('click', function (e) {
-        if (e.target === this) {
-            modal.remove();
+    dialog.append(modalContent);
+    $('body').append(dialog);
+    // Öffne Dialog als Modal
+    dialog[0].showModal();
+    // Clean up nach dem Schließen
+    dialog.on('close', () => {
+        dialog.remove();
+    });
+    // Click auf Backdrop (außerhalb) schließt auch
+    dialog.on('click', function (e) {
+        const rect = this.getBoundingClientRect();
+        const isInDialog = (e.clientX >= rect.left &&
+            e.clientX <= rect.right &&
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom);
+        if (!isInDialog) {
+            this.close();
         }
     });
 }

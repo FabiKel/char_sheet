@@ -20,5 +20,32 @@ jQuery(() => {
     `;
 
     $("#extensions_settings").append(settingsHtml);
+
+    // UI Toolbar erstellen
+    createToolbar();
+
     console.log("[Character Sheet] Extension loaded successfully!");
 });
+
+function createToolbar(): void {
+    // Toolbar HTML
+    const toolbarHtml = `
+        <div id="char-sheet-toolbar" class="char-sheet-toolbar">
+            <button id="cs-inventory-btn" class="menu_button menu_button_icon">
+                <i class="fa-solid fa-backpack"></i>
+                <span>Inventar</span>
+            </button>
+        </div>
+    `;
+
+    // Einfügen über dem Textarea
+    const sendTextarea = $("#send_textarea");
+    const parentContainer = sendTextarea.parent();
+
+    parentContainer.before(toolbarHtml);
+
+    // Event Handler
+    $("#cs-inventory-btn").on("click", () => {
+        console.log("Inventar Button clicked!");
+    });
+}

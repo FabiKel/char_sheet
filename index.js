@@ -47,43 +47,36 @@ function openInventoryModal() {
     if ($("#char-sheet-modal").length > 0) {
         return;
     }
-    // Erstelle Dialog Element
-    const dialog = $('<dialog>', {
-        id: 'char-sheet-modal',
-        class: 'char-sheet-modal'
+    const modalHtml = `
+        <dialog id="char-sheet-modal" class="char-sheet-modal">
+            <div class="char-sheet-modal-content">
+                <div class="char-sheet-modal-header">
+                    <h3>Inventar</h3>
+                    <span class="char-sheet-modal-close">×</span>
+                </div>
+                <div class="char-sheet-modal-body">
+                    <p>Hier kommt das Inventar hin!</p>
+                </div>
+            </div>
+        </dialog>
+    `;
+    $('body').append(modalHtml);
+    const dialog = $('#char-sheet-modal')[0];
+    // Event Handlers
+    $('.char-sheet-modal-close').on('click', () => {
+        dialog.close();
     });
-    const modalContent = $('<div>', {
-        class: 'char-sheet-modal-content'
-    });
-    const modalHeader = $('<div>', {
-        class: 'char-sheet-modal-header'
-    }).append($('<h3>').text('Inventar'), $('<span>', {
-        class: 'char-sheet-modal-close',
-        text: '×',
-        click: () => dialog[0].close()
-    }));
-    const modalBody = $('<div>', {
-        class: 'char-sheet-modal-body'
-    }).append($('<p>').text('Hier kommt das Inventar hin!'));
-    modalContent.append(modalHeader, modalBody);
-    dialog.append(modalContent);
-    $('body').append(dialog);
-    // Öffne Dialog als Modal
-    dialog[0].showModal();
-    // Clean up nach dem Schließen
-    dialog.on('close', () => {
-        dialog.remove();
-    });
-    // Click auf Backdrop (außerhalb) schließt auch
-    dialog.on('click', function (e) {
-        const rect = this.getBoundingClientRect();
-        const isInDialog = (e.clientX >= rect.left &&
-            e.clientX <= rect.right &&
-            e.clientY >= rect.top &&
-            e.clientY <= rect.bottom);
-        if (!isInDialog) {
-            this.close();
+    // Click auf Backdrop schließt Dialog
+    $('#char-sheet-modal').on('click', function (e) {
+        if (e.target === this) {
+            dialog.close();
         }
     });
+    // Clean up nach dem Schließen
+    $('#char-sheet-modal').on('close', function () {
+        $(this).remove();
+    });
+    // Öffne als Modal
+    dialog.showModal();
 }
 //# sourceMappingURL=index.js.map

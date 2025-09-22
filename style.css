@@ -1,0 +1,36 @@
+.char-sheet-toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#char-sheet-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#char-sheet-modal .modal-content {
+    width: 80%;
+    max-width: 900px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+#char-sheet-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--SmartThemeBorderColor);
+}
+
+#char-sheet-modal .modal-close {
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#char-sheet-modal .modal-body {
+    padding: 20px;
+}

@@ -1,36 +1,53 @@
-.char-sheet-toolbar {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    padding: 5px;
-}
-
-#char-sheet-modal {
+.char-sheet-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#char-sheet-modal .modal-content {
+.char-sheet-modal-content {
+    background: var(--SmartThemeBodyColor);
+    border-radius: 10px;
     width: 80%;
     max-width: 900px;
     max-height: 80vh;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-#char-sheet-modal .modal-header {
+.char-sheet-modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 15px 20px;
     border-bottom: 1px solid var(--SmartThemeBorderColor);
 }
 
-#char-sheet-modal .modal-close {
-    font-size: 28px;
-    cursor: pointer;
+.char-sheet-modal-header h3 {
+    margin: 0;
+    color: var(--SmartThemeEmColor);
 }
 
-#char-sheet-modal .modal-body {
+.char-sheet-modal-close {
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--SmartThemeEmColor);
+    line-height: 20px;
+}
+
+.char-sheet-modal-close:hover {
+    color: var(--SmartThemeQuoteColor);
+}
+
+.char-sheet-modal-body {
     padding: 20px;
+    overflow-y: auto;
+    flex: 1;
 }

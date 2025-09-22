@@ -53,7 +53,9 @@ function createToolbar(): void {
 
 function openInventoryModal(): void {
     // Check ob Modal schon existiert
-    if ($("#char-sheet-modal").length > 0) return;
+    if ($("#char-sheet-modal").length > 0) {
+        return
+    }
 
     const modalHtml = `
         <div id="char-sheet-modal" class="modal">

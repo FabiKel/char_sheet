@@ -13,7 +13,7 @@ jQuery(() => {
                     <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
                 </div>
                 <div class="inline-drawer-content">
-                    <p>Character Sheet Extension loaded! Version 0.1.0</p>
+                    <p>Character Sheet Extension loaded! Version 0.1.1</p>
                 </div>
             </div>
         </div>

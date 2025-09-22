@@ -1,0 +1,11 @@
+{
+  "display_name": "Character Sheet",
+  "loading_order": 50,
+  "requires": [],
+  "optional": [],
+  "js": "index.js",
+  "css": "style.css",
+  "author": "Faragan",
+  "version": "0.1.0",
+  "homePage": ""
+}

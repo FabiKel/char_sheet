@@ -28,7 +28,7 @@ function createToolbar() {
         <div id="char-sheet-toolbar" class="char-sheet-toolbar">
             <button id="cs-inventory-btn" class="menu_button menu_button_icon">
                 <i class="fa-solid fa-backpack"></i>
-                <span>Inventar</span>
+                <span>Inventory</span>
             </button>
         </div>
     `;
@@ -39,6 +39,32 @@ function createToolbar() {
     // Event Handler
     $("#cs-inventory-btn").on("click", () => {
         console.log("Inventar Button clicked!");
+        openInventoryModal();
+    });
+}
+function openInventoryModal() {
+    // Check ob Modal schon existiert
+    if ($("#char-sheet-modal").length > 0)
+        return;
+    const modalHtml = `
+        <div id="char-sheet-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Inventory</h3>
+                    <span id="cs-modal-close" class="modal-close">×</span>
+                </div>
+                <div class="modal-body">
+                    <p>Hier kommt das Inventar hin!</p>
+                </div>
+            </div>
+        </div>
+    `;
+    $("body").append(modalHtml);
+    // Close handlers
+    $("#cs-modal-close, #char-sheet-modal").on("click", function (e) {
+        if (e.target === this) {
+            $("#char-sheet-modal").remove();
+        }
     });
 }
 //# sourceMappingURL=index.js.map

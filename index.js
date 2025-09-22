@@ -43,29 +43,40 @@ function createToolbar() {
     });
 }
 function openInventoryModal() {
-    // Check ob Modal schon existiert
-    if ($("#char-sheet-modal").length > 0) {
-        return;
-    }
-    const modalHtml = `
-        <div id="char-sheet-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Inventory</h3>
-                    <span id="cs-modal-close" class="modal-close">×</span>
-                </div>
-                <div class="modal-body">
-                    <p>Hier kommt das Inventar hin!</p>
-                </div>
+    // Erstelle ein div Element statt String
+    const modal = document.createElement('div');
+    modal.id = 'char-sheet-modal';
+    modal.className = 'modal';
+    modal.style.display = 'block'; // Explizit sichtbar machen
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    modal.style.zIndex = '9999';
+    modal.innerHTML = `
+        <div class="modal-content" style="
+            position: relative;
+            margin: 5% auto;
+            padding: 20px;
+            width: 80%;
+            background: var(--SmartThemeBodyColor);
+            border-radius: 10px;
+        ">
+            <div class="modal-header">
+                <h3>Inventar</h3>
+                <span id="cs-modal-close" style="cursor: pointer; font-size: 28px;">×</span>
+            </div>
+            <div class="modal-body">
+                <p>Hier kommt das Inventar hin!</p>
             </div>
         </div>
     `;
-    $("body").append(modalHtml);
-    // Close handlers
-    $("#cs-modal-close, #char-sheet-modal").on("click", function (e) {
-        if (e.target === this) {
-            $("#char-sheet-modal").remove();
-        }
+    document.body.appendChild(modal);
+    // Close handler
+    document.getElementById('cs-modal-close')?.addEventListener('click', () => {
+        modal.remove();
     });
 }
 //# sourceMappingURL=index.js.map
